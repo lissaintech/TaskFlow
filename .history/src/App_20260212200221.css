@@ -1,0 +1,116 @@
+.app {
+  padding: 40px;
+  min-height: 100vh;
+  background: #f3f6f4;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2f3e2f;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: 32px;
+  color: #3c4f3c;
+}
+
+.top-bar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.top-bar input {
+  padding: 10px;
+  border: 1px solid #cdd8ce;
+  border-radius: 8px;
+  background: white;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.top-bar input:focus {
+  border-color: #9caf88;
+  box-shadow: 0 0 0 2px rgba(156, 175, 136, 0.2);
+}
+
+.top-bar button {
+  padding: 10px 16px;
+  border: none;
+  background: #9caf88;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.top-bar button:hover {
+  background: #6e8b6b;
+}
+
+.board {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.column {
+  background: #e3ebe4;
+  padding: 18px;
+  border-radius: 14px;
+  width: 260px;
+  min-height: 420px;
+  transition: 0.2s ease;
+}
+
+.column h3 {
+  margin-bottom: 14px;
+  color: #3c4f3c;
+}
+
+.task-card {
+  background: white;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(110, 139, 107, 0.08);
+  transition: 0.2s ease;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(110, 139, 107, 0.15);
+}
+
+.task-card span {
+  flex: 1;
+}
+
+.task-card button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.task-card button:hover {
+  transform: scale(1.1);
+}
+
+
+.column-todo {
+  border-top: 5px solid #9caf88;
+}
+
+.column-doing {
+  border-top: 5px solid #b8c7a6;
+}
+
+.column-done {
+  border-top: 5px solid #6e8b6b;
+}

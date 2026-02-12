@@ -97,7 +97,7 @@ function App() {
     return (
       <div
         ref={setNodeRef}
-        className={"column column-${status.toLowerCase()}"}
+        className={"colum"}
         style={{
           minWidth: "220px",
           minHeight: "300px",
@@ -125,13 +125,11 @@ function App() {
       id: task.id
     });
 
-    const style = {
-      transform: transform
-        ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-        : undefined,
-      transition: "transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1)"
-    };
-    
+    const style = transform
+      ? {
+          transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
+        }
+      : undefined;
 
     return (
       <div

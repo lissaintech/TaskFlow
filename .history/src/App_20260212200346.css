@@ -84,7 +84,6 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .task-card:hover {

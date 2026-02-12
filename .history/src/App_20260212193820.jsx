@@ -1,6 +1,3 @@
-import "./App.css";
-
-
 import { useState, useEffect } from "react";
 import {
   DndContext,
@@ -10,6 +7,7 @@ import {
 
 function App() {
   const [search, setSearch] = useState("");
+
   const [input, setInput] = useState("");
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
@@ -97,7 +95,6 @@ function App() {
     return (
       <div
         ref={setNodeRef}
-        className={"column column-${status.toLowerCase()}"}
         style={{
           minWidth: "220px",
           minHeight: "300px",
@@ -125,13 +122,11 @@ function App() {
       id: task.id
     });
 
-    const style = {
-      transform: transform
-        ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-        : undefined,
-      transition: "transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1)"
-    };
-    
+    const style = transform
+      ? {
+          transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
+        }
+      : undefined;
 
     return (
       <div
@@ -153,40 +148,31 @@ function App() {
     );
   }
 
-
-
-  const filteredTasks = tasks.filter(task =>
-    task.title.toLowerCase().includes(search.toLowerCase())
-  );
-  
-
   // =========================
   // UI
   // =========================
   return (
-    <div className="app">
+    <div style={{ padding: "20px" }}>
       <h1>TaskFlow</h1>
-  
-      <div className="top-bar">
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter task"
-        />
-        <button onClick={addTask}>Add</button>
-  
-        <input
-          placeholder="Search tasks..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-  
+
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter task"
+      />
+      <button onClick={addTask}>Add</button>
+
       <DndContext onDragEnd={handleDragEnd}>
-        <div className="board">
+        <div
+          style={{
+            display: "flex",
+            gap: "40px",
+            marginTop: "20px"
+          }}
+        >
           {["Todo", "Doing", "Done"].map(status => (
             <Column key={status} status={status}>
-              {filteredTasks
+              {tasks
                 .filter(task => task.status === status)
                 .map(task => (
                   <Task key={task.id} task={task}>
@@ -198,7 +184,11 @@ function App() {
                             setEditInput(e.target.value)
                           }
                         />
-                        <button onClick={() => saveEdit(task.id)}>
+                        <button
+                          onClick={() =>
+                            saveEdit(task.id)
+                          }
+                        >
                           💾
                         </button>
                       </>
@@ -213,7 +203,11 @@ function App() {
                         >
                           ✏️
                         </button>
-                        <button onClick={() => deleteTask(task.id)}>
+                        <button
+                          onClick={() =>
+                            deleteTask(task.id)
+                          }
+                        >
                           ❌
                         </button>
                       </>
@@ -226,7 +220,6 @@ function App() {
       </DndContext>
     </div>
   );
-  
 }
 
 export default App;
