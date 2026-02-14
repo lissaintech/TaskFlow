@@ -124,34 +124,34 @@ function App() {
     } = useDraggable({
       id: task.id
     });
-  
+
     const style = {
       transform: transform
         ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
         : undefined,
       transition: "transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1)"
     };
-  
+    
+
     return (
       <div
         ref={setNodeRef}
-        className="task-card"
-        style={style}
+        style={{
+          ...style,
+          marginBottom: "8px",
+          padding: "8px",
+          border: "1px solid black",
+          borderRadius: "6px",
+          backgroundColor: "white",
+          cursor: "grab"
+        }}
+        {...listeners}
+        {...attributes}
       >
-        {/* DRAG HANDLE */}
-        <span
-          {...listeners}
-          {...attributes}
-          style={{ cursor: "grab", marginRight: "8px" }}
-        >
-          ⠿
-        </span>
-  
         {children}
       </div>
     );
   }
-  
 
 
 
