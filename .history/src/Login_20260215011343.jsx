@@ -23,12 +23,12 @@ function Login() {
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email, pin);
 
-        const user = userCredential.user;
+const user = userCredential.user;
 
-        await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        displayName: user.email.split("@")[0]
-        });
+await setDoc(doc(db, "users", user.uid), {
+  email: user.email,
+  displayName: user.email.split("@")[0]
+});
 
       }
 

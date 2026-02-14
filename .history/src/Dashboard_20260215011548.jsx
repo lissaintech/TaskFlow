@@ -8,8 +8,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
-  onSnapshot,
-  getDocs
+  onSnapshot
 } from "firebase/firestore";
 
 import {
@@ -91,19 +90,6 @@ function Dashboard() {
         ...doc.data()
       }));
       setTasks(tasksData);
-      // Fetch users once
-      const fetchUsers = async () => {
-        const usersSnapshot = await getDocs(collection(db, "users"));
-        const userMap = {};
-
-        usersSnapshot.forEach((doc) => {
-          userMap[doc.id] = doc.data();
-        });
-
-        setUsers(userMap);
-      };
-
-      fetchUsers();
     });
 
     return () => unsubscribe();
@@ -190,10 +176,11 @@ function Dashboard() {
       >
         — {task.ownerId === auth.currentUser.uid
             ? "You"
-            : users[task.ownerId]?.displayName || "User"}
+            : auth.currentUser?.email === task.ownerId
+            ? "You"
+            : task.ownerId}
       </span>
-      )}
-
+    )}
   </div>
 </div>
 

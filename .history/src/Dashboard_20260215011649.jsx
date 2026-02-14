@@ -92,18 +92,19 @@ function Dashboard() {
       }));
       setTasks(tasksData);
       // Fetch users once
-      const fetchUsers = async () => {
-        const usersSnapshot = await getDocs(collection(db, "users"));
-        const userMap = {};
+const fetchUsers = async () => {
+  const usersSnapshot = await getDocs(collection(db, "users"));
+  const userMap = {};
 
-        usersSnapshot.forEach((doc) => {
-          userMap[doc.id] = doc.data();
-        });
+  usersSnapshot.forEach((doc) => {
+    userMap[doc.id] = doc.data();
+  });
 
-        setUsers(userMap);
-      };
+  setUsers(userMap);
+};
 
-      fetchUsers();
+fetchUsers();
+
     });
 
     return () => unsubscribe();
@@ -190,10 +191,11 @@ function Dashboard() {
       >
         — {task.ownerId === auth.currentUser.uid
             ? "You"
-            : users[task.ownerId]?.displayName || "User"}
+            : auth.currentUser?.email === task.ownerId
+            ? "You"
+            : task.ownerId}
       </span>
-      )}
-
+    )}
   </div>
 </div>
 

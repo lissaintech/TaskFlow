@@ -190,10 +190,11 @@ function Dashboard() {
       >
         — {task.ownerId === auth.currentUser.uid
             ? "You"
-            : users[task.ownerId]?.displayName || "User"}
+            : auth.currentUser?.email === task.ownerId
+            ? "You"
+            : task.ownerId}
       </span>
-      )}
-
+    )}
   </div>
 </div>
 

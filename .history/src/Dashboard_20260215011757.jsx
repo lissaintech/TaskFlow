@@ -192,7 +192,7 @@ function Dashboard() {
             ? "You"
             : users[task.ownerId]?.displayName || "User"}
       </span>
-      )}
+)}
 
   </div>
 </div>

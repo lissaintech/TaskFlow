@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { auth, db } from "./firebase";
+import { auth } from "./firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -21,14 +19,9 @@ function Login() {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, pin);
       } else {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, pin);
-
-        const user = userCredential.user;
-
-        await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        displayName: user.email.split("@")[0]
-        });
+        await createUserWithEmailAndPassword(auth, email, pin);
+        import { doc, setDoc } from "firebase/firestore";
+        import { db } from "./firebase";
 
       }
 

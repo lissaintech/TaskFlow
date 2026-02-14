@@ -181,18 +181,18 @@ function Dashboard() {
     </span>
 
     {viewMode === "team" && (
-      <span
-        style={{
-          fontSize: "13px",
-          color: "#7a8f85",
-          fontStyle: "italic"
-        }}
-      >
-        — {task.ownerId === auth.currentUser.uid
-            ? "You"
-            : users[task.ownerId]?.displayName || "User"}
-      </span>
-      )}
+  <span
+    style={{
+      fontSize: "13px",
+      color: "#7a8f85",
+      fontStyle: "italic"
+    }}
+  >
+    — {task.ownerId === auth.currentUser.uid
+        ? "You"
+        : users[task.ownerId]?.displayName || "User"}
+  </span>
+)}
 
   </div>
 </div>
