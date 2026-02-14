@@ -88,7 +88,7 @@ function Login() {
   
           <input
             type="password"
-            placeholder="6(atleast)-digit PIN"
+            placeholder="6()-digit PIN"
             value={pin}
             onChange={(e) => setPin(e.target.value)}
             required
